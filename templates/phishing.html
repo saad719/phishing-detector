@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phishing Details</title>
+    <link rel="stylesheet" href="/static/stylesphish.css">
+</head>
+<body>
+    <div class="details-container">
+        <h1>Phishing Awareness</h1>
+        <p>Phishing is a fraudulent attempt to steal sensitive information such as passwords, account details, or financial information by disguising as a trustworthy entity in communication.</p>
+        <p>Consequences of phishing:</p>
+        <ul>
+            <li>Loss of personal data</li>
+            <li>Financial fraud</li>
+            <li>Identity theft</li>
+            <li>Compromised security</li>
+        </ul>
+        <h2>How to Protect Yourself</h2>
+        <ul>
+            <li>Verify the sender's identity before clicking on links or downloading attachments.</li>
+            <li>Look for red flags in URLs, such as misspellings or unusual domain names.</li>
+            <li>Use two-factor authentication wherever possible.</li>
+            <li>Regularly update your passwords and avoid using the same password across platforms.</li>
+            <li>Install and update antivirus software to detect malicious activities.</li>
+        </ul>
+        <button id="blockEmail" class="block-button">Block Sender</button>
+        <p id="blockMessage" class="message"></p>
+    </div>
+</body>
+<script>
+    document.getElementById("blockEmail").addEventListener("click", function () {
+        fetch('/block-email', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ action: "block" })
+        })
+        .then(response => response.json())
+        .then(data => {
+            const blockMessage = document.getElementById("blockMessage");
+            if (data.success) {
+                blockMessage.style.color = "green";
+                blockMessage.innerText = "Sender blocked successfully!";
+            } else {
+                blockMessage.style.color = "red";
+                blockMessage.innerText = "Failed to block sender. Please try again.";
+            }
+        })
+        .catch(error => {
+            console.error("Error blocking sender:", error);
+        });
+    });
+</script>
+</html>

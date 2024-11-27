@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phishing Link Detector</title>
+    <link rel="stylesheet" href="static/style.css">
+</head>
+<body>
+    <div class="hero">
+        <header>
+            <h1 class="glow-text">Cyber Shield</h1>
+            <p>Your Ultimate Phishing Link Protection Tool</p>
+        </header>
+        <main>
+            <form action="/check-link" method="post" id="link-form" >
+                <div class="input-container">
+                    <label for="link" class="neon-text">Enter URL to Check:</label>
+                    <input type="url" name="link" id="link" placeholder="Paste the suspicious link here" required>
+                </div>
+                <button type="submit" class="btn glow-button">Analyze Link</button>
+            </form>
+            <div id="result" class="result-box">
+                
+            </div>
+            <div id="emailForm" class="email-form" style="display: none;">
+                <p>Block the sender?</p>
+                <button id="seeMoreDetails" class="details-button">See More Details</button>
+            </div>
+            
+            
+        </main>
+    </div>
+    <footer>
+        <p>&copy; 2024 Cyber Shield | Protecting Your Digital Footprint</p>
+    </footer>
+    <script src="static/script.js"></script>
+</body>
+</html>
