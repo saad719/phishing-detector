@@ -1,39 +1,35 @@
-document.getElementById("link-form").addEventListener("submit", async function (e) {
-    e.preventDefault();  // Prevent form from submitting the default way
-
-    const url = document.getElementById("link").value;  // Use correct input ID
+document.getElementById("formemail").addEventListener("submit", async function (e) {
+    e.preventDefault();  // Prevent the form from submitting normally
+    console.log("hello");
+    const email = document.getElementById("email").value;  // Get the email address
+    const emailText = document.getElementById("emailText").value;  // Get the email text
     const resultElem = document.getElementById("result");
-
-    // Send the data as JSON in the request body
-    const response = await fetch("/check-link", {
+    console.log("Sending data:", { email: email, emailText: emailText });
+    // Send the email address and content as JSON in the request body
+    const response = await fetch("/check-email", {
         method: "POST",
         headers: {
-            "Content-Type": "application/json",  // Ensure correct content type
+            "Content-Type": "application/json",  // Ensure the correct content type
         },
-        body: JSON.stringify({ url: url }),  // Send URL as JSON
-    })
-    
-    
+        body: JSON.stringify({ email: email, emailText: emailText }),  // Send both email address and content
+    });
 
     // Handle the response
     const data = await response.json();
     if (data.error) {
         // Display the error message to the user
-        alert(data.error);}
-        else {
-            resultElem.innerText = data.result;
+        alert(data.error);
+    } else {
+        resultElem.innerText = data.result;
         
-            if (data.result.trim() === "Phishing Link" || data.result.trim() === "Suspicious") {
-                console.log("Condition met: Showing email form.");
-                document.getElementById("emailForm").style.display = "block";
-            } else {
-                console.log("Condition not met.");
-            }
+        if (data.result.trim() === "Phishing Link" || data.result.trim() === "Suspicious") {
+            console.log("Condition met: Showing email form.");
+            document.getElementById("emailForm").style.display = "block";
+        } else {
+            console.log("Condition not met.");
         }
-        
-});   
-
-
+    }
+});
 document.getElementById("seeMoreDetails").addEventListener("click", function () {
     window.location.href = "/phishing-details"; // Redirect to the phishing details page
 });

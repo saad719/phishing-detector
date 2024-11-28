@@ -17,27 +17,28 @@
             <p>Your Ultimate Phishing Link Protection Tool</p>
         </header>
         <main>
-            <form action="/check-link" method="post" id="link-form" >
+            <form action="/check-email" method="post" id="formemail">
                 <div class="input-container">
-                    <label for="link" class="neon-text">Enter URL to Check:</label>
-                    <input type="url" name="link" id="link" placeholder="Paste the suspicious link here" required>
+                    <label for="email" class="neon-text">Enter Email Address:</label>
+                    <input type="email" name="email" id="email" placeholder="Enter the email address" required>
                 </div>
-                <button type="submit" class="btn glow-button">Analyze Link</button>
+                <div class="input-container">
+                    <label for="emailText" class="neon-text">Paste the Suspicious Email Content:</label>
+                    <textarea name="emailText" id="emailText" placeholder="Paste the email content here" required></textarea>
+                </div>
+                <button type="submit" class="btn glow-button">Analyze Email</button>
             </form>
-            <div id="result" class="result-box">
-                
-            </div>
+            
+            <div id="result" class="result-box"></div>
             <div id="emailForm" class="email-form" style="display: none;">
                 <p>Block the sender?</p>
                 <button id="seeMoreDetails" class="details-button">See More Details</button>
             </div>
-            
             
         </main>
     </div>
     <footer>
         <p>&copy; 2024 Cyber Shield | Protecting Your Digital Footprint</p>
     </footer>
-    <script src="static/script.js"></script>
+    <script src="static/script2.js"></script>
 </body>
-</html>
