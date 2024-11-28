@@ -25,11 +25,11 @@
             <li>Regularly update your passwords and avoid using the same password across platforms.</li>
             <li>Install and update antivirus software to detect malicious activities.</li>
         </ul>
-        <button id="blockEmail" class="block-button">Block Sender</button>
-        <p id="blockMessage" class="message"></p>
+        
     </div>
 </body>
 <script>
+    
     document.getElementById("blockEmail").addEventListener("click", function () {
         fetch('/block-email', {
             method: 'POST',
